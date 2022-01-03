@@ -1,14 +1,20 @@
-from rest_framework import viewsets
-from .serializers import UserProfileSerializer, PsychicSerializer
+from rest_framework import permissions
+from .serializers import UserProfileSerializer, PsychicSerializer, StatisticSerializer
 from rest_framework.viewsets import ModelViewSet
-from ..models import UserProfile, Psychic
+from ..models import Statistic, UserNumber, Psychic
 
 
 class UserProfileViewSet(ModelViewSet):
-    queryset = UserProfile.objects.all()
+    queryset = UserNumber.objects.all()
     serializer_class = UserProfileSerializer
 
 
 class PsychicViewSet(ModelViewSet):
     queryset = Psychic.objects.all()
     serializer_class = PsychicSerializer
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
+class StatisticViewSet(ModelViewSet):
+    queryset = Statistic.objects.all()
+    serializer_class = StatisticSerializer
