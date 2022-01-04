@@ -1,5 +1,7 @@
+from rest_framework.fields import CurrentUserDefault
 from ..models import UserNumber, Psychic, Statistic
 from rest_framework.serializers import ModelSerializer
+import random
 
 class UserProfileSerializer(ModelSerializer):
     class Meta:

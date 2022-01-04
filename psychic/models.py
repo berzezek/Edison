@@ -1,11 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+import random
 
-# Create your models here.
 class UserNumber(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     number = models.IntegerField()
-
 
 class Psychic(models.Model):
     title = models.CharField(max_length=255)

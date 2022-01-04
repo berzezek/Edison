@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'django_extensions',
-    'rest_framework_simplejwt',
+    # 'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -135,8 +135,8 @@ CORS_ALLOW_METHODS = [
     "PUT",
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#     )
+# }
