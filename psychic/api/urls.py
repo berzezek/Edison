@@ -1,13 +1,13 @@
 from rest_framework.routers import SimpleRouter
-from .views import UserNumberViewSet, PsychicViewSet, StatisticViewSet
+from .views import UserNumberViewSet, PsychicViewSet, StatisticViewSet, UserStatisticViewSet
 
 
 
 router = SimpleRouter()
 router.register('usernumber', UserNumberViewSet, basename='usernumber')
 router.register('psychic', PsychicViewSet, basename='psychic')
-router.register('statistic', StatisticViewSet, basename='statistic')
-router.register('userstatistic', StatisticViewSet, basename='userstatistic')
+router.register('psychicstatistic', StatisticViewSet, basename='statistic')
+router.register('userstatistic', UserStatisticViewSet, basename='userstatistic')
 
 urlpatterns = []
 
