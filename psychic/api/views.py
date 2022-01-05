@@ -20,7 +20,7 @@ class UserNumberViewSet(ModelViewSet):
 class PsychicViewSet(ModelViewSet):
     queryset = Psychic.objects.all()
     serializer_class = PsychicSerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class StatisticViewSet(ModelViewSet):

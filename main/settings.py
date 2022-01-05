@@ -29,12 +29,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'psychic',
     'rest_framework',
-    'corsheaders',
     'django_extensions',
+    
+    'corsheaders',
     'djoser',
     'rest_framework.authtoken',
-
-    # 'rest_framework_simplejwt',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -126,6 +126,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+    'http://127.0.0.1:3000',
     'http://127.0.0.1:8000',
 ]
 
@@ -150,9 +151,6 @@ SIMPLE_JWT = {
 }
 
 DJOSER = {
-    'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
-    'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
-    'ACTIVATION_URL': '#/activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': False,
     'SERIALIZERS': {},
 }

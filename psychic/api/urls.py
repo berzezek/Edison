@@ -6,7 +6,7 @@ from .views import UserNumberViewSet, PsychicViewSet, StatisticViewSet, UserStat
 router = SimpleRouter()
 router.register('usernumber', UserNumberViewSet, basename='usernumber')
 router.register('psychic', PsychicViewSet, basename='psychic')
-router.register('psychicstatistic', StatisticViewSet, basename='statistic')
+router.register('psychicstatistic', StatisticViewSet, basename='psychicstatistic')
 router.register('userstatistic', UserStatisticViewSet, basename='userstatistic')
 
 urlpatterns = []
