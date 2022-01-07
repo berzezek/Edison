@@ -1,46 +1,45 @@
-import random
-from rest_framework import permissions, serializers, filters
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from .serializers import UserNumberSerializer, PsychicSerializer, StatisticSerializer
+from rest_framework.decorators import action, permission_classes
+from .serializers import PsychicNumberSerializer, UserNumberSerializer, PsychicSerializer, UserNumberCreateSerializer
 from rest_framework.viewsets import ModelViewSet
-from ..models import Statistic, UserNumber, Psychic
+from ..models import Psychic, UserNumber, PsychicNumber
+from .permissions import IsOwner
+
 
 
 class UserNumberViewSet(ModelViewSet):
-    queryset = UserNumber.objects.all()
+    
     serializer_class = UserNumberSerializer
+    # permission_classes = (permissions.IsAuthenticated, IsOwner)
 
-    @action(detail=True, methods=['post'])
-    def user_post_number(self, request, pk=None):
-        
+    def get_queryset(self):
+        return UserNumber.objects.filter(user=self.request.user.id)
 
-        return Response()
+
+class UserNumberCreateViewSet(ModelViewSet):
+    
+    serializer_class = UserNumberCreateSerializer
+    # permission_classes = (permissions.IsAuthenticated, IsOwner)
+
+    def get_queryset(self):
+        return UserNumber.objects.filter(user=self.request.user.id)
+
 
 class PsychicViewSet(ModelViewSet):
     queryset = Psychic.objects.all()
     serializer_class = PsychicSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 
-class StatisticViewSet(ModelViewSet):
-    queryset = Statistic.objects.all()
-    serializer_class = StatisticSerializer
-    permission_classes = [permissions.AllowAny]
+class PsychicNumberViewSet(ModelViewSet):
+    queryset = PsychicNumber.objects.all()
+    serializer_class = PsychicNumberSerializer
 
+    # def get_queryset(self):
+    #     return self.queryset.filter(user_number__user=self.request.user.id).filter(user_number__number_user=self.kwargs['id'])
 
-class IsOwnerFilterBackend(filters.BaseFilterBackend):
-    """
-    Filter that only allows users to see their own objects.
-    """
-    def filter_queryset(self, request, queryset, view):
-        print(request.user.id)
-        return queryset.filter(user_number_id=request.user.id)
+    def get_queryset(self):
 
-
-class UserStatisticViewSet(ModelViewSet):
-    queryset = Statistic.objects.all()
-    serializer_class = StatisticSerializer
-    filter_backends = [IsOwnerFilterBackend]
-
-        
+        queryset = PsychicNumber.objects.all().filter(user_number__user=self.request.user.id)
+        username = self.request.query_params.get('num')
+        if username is not None:
+            queryset = queryset.filter(user_number__number_user=username)
+        return queryset
