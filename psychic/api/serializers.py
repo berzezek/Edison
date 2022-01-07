@@ -35,3 +35,9 @@ class PsychicNumberSerializer(ModelSerializer):
         fields = '__all__'
 
 
+class PsychicNumberCreateSerializer(ModelSerializer):
+    class Meta:
+        model = PsychicNumber
+        fields = '__all__'
+
+

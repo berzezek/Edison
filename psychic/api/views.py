@@ -1,5 +1,6 @@
 from rest_framework.decorators import action, permission_classes
-from .serializers import PsychicNumberSerializer, UserNumberSerializer, PsychicSerializer, UserNumberCreateSerializer
+from rest_framework.generics import ListCreateAPIView
+from .serializers import PsychicNumberSerializer, UserNumberSerializer, PsychicSerializer, UserNumberCreateSerializer, PsychicNumberCreateSerializer
 from rest_framework.viewsets import ModelViewSet
 from ..models import Psychic, UserNumber, PsychicNumber
 from .permissions import IsOwner
@@ -30,7 +31,7 @@ class PsychicViewSet(ModelViewSet):
 
 
 class PsychicNumberViewSet(ModelViewSet):
-    queryset = PsychicNumber.objects.all()
+    # queryset = PsychicNumber.objects.all()
     serializer_class = PsychicNumberSerializer
 
     # def get_queryset(self):
@@ -43,3 +44,7 @@ class PsychicNumberViewSet(ModelViewSet):
         if username is not None:
             queryset = queryset.filter(user_number__number_user=username)
         return queryset
+
+class PsychicNumberCreateViewSet(ModelViewSet):
+    queryset = PsychicNumber.objects.all()
+    serializer_class = PsychicNumberCreateSerializer
