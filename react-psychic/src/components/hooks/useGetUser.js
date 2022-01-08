@@ -5,18 +5,16 @@ import { baseURL } from '../global';
 
 export default function useGetUser() {
 
-    const [sign, setSign] = useState([]);
+    const [sign, setSign] = useState({});
   
     useEffect(() => {
       axios({
         method: 'get',
         url: baseURL + 'auth/users/me/',
-      }).then((response) => {
-        setSign(response.data);
-      }).catch(err => {
-        console.log(err)
+      }).then((response) => { setSign(response.data) }
+      ).catch(err => {
       });
     }, []);
   
-    return (sign ? sign : null);
+    return sign
 }

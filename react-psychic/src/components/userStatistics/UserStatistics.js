@@ -3,6 +3,7 @@ import axios from 'axios'
 import { baseURL } from '../global';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useGetUser from '../hooks/useGetUser';
 
 
 export default function UserStatistic() {
@@ -10,7 +11,8 @@ export default function UserStatistic() {
     let numeric = 0
 
     const [userNumber, setUserNumber] = useState([]);
-    const user = (userNumber.length > 0 ? userNumber[0].user.username : null);
+    const user = useGetUser();
+    
 
     useEffect(() => {
       axios({
@@ -22,13 +24,12 @@ export default function UserStatistic() {
         console.log(err)
       });
     }, []);
-   
     return (
       
       <div className='container mt-5 w-50 text-center shadow rounded p-3'>
-          { user ? 
+          { user.username ? 
           <>
-          <h2 className='my-3'>Welcome {user}</h2>
+          <h2 className='my-3'>Welcome {user.username}</h2>
           <Table striped bordered hover>
             <thead>
                 <tr>
@@ -40,7 +41,7 @@ export default function UserStatistic() {
                 {userNumber.map((e) => (
                 <tr key={e.id}>
                 <td>{numeric += 1}</td>
-                <td><Link to={{ pathname: `/psychicnumber/${e.id}`, fromDashboard: false }} >{e.number_user}</Link></td>
+                <td><Link to={{ pathname: `/psychicnumber/${e.number_user}`, fromDashboard: false }} >{e.number_user}</Link></td>
                 </tr>
                 ))}
                 

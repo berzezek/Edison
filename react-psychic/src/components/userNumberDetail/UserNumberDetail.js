@@ -13,8 +13,6 @@ export default function UserNumberDetail() {
     
     const [userStatistic, setUserStatistic] = useState([]);
 
-    console.log(userStatistic);
-
     useEffect(() => {
         axios({
                 method: 'GET',

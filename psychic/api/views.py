@@ -19,7 +19,7 @@ class UserNumberViewSet(ModelViewSet):
 class UserNumberCreateViewSet(ModelViewSet):
     
     serializer_class = UserNumberCreateSerializer
-    # permission_classes = (permissions.IsAuthenticated, IsOwner)
+    # permission_classes = (IsOwner)
 
     def get_queryset(self):
         return UserNumber.objects.filter(user=self.request.user.id)
@@ -31,11 +31,9 @@ class PsychicViewSet(ModelViewSet):
 
 
 class PsychicNumberViewSet(ModelViewSet):
-    # queryset = PsychicNumber.objects.all()
+
     serializer_class = PsychicNumberSerializer
 
-    # def get_queryset(self):
-    #     return self.queryset.filter(user_number__user=self.request.user.id).filter(user_number__number_user=self.kwargs['id'])
 
     def get_queryset(self):
 
