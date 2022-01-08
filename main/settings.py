@@ -114,7 +114,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = ((BASE_DIR / 'react-psychic/build/static'), )
@@ -125,7 +125,7 @@ STATICFILES_DIRS = ((BASE_DIR / 'react-psychic/build/static'), )
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
+    'https://edison-psychic.herokuapp.com',
     'http://127.0.0.1:3000',
     'http://127.0.0.1:8000',
 ]
