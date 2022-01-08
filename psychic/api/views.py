@@ -1,4 +1,4 @@
-from rest_framework.decorators import action, permission_classes
+from rest_framework.permissions import AllowAny
 from rest_framework.generics import ListCreateAPIView
 from .serializers import PsychicNumberSerializer, UserNumberSerializer, PsychicSerializer, UserNumberCreateSerializer, PsychicNumberCreateSerializer
 from rest_framework.viewsets import ModelViewSet
@@ -10,7 +10,7 @@ from .permissions import IsOwner
 class UserNumberViewSet(ModelViewSet):
     
     serializer_class = UserNumberSerializer
-    # permission_classes = (permissions.IsAuthenticated, IsOwner)
+    permission_classes = (AllowAny,)
 
     def get_queryset(self):
         return UserNumber.objects.filter(user=self.request.user.id)

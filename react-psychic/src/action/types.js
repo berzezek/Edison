@@ -1,0 +1,1 @@
+export const AUTHENTICATE_THE_USER = false
