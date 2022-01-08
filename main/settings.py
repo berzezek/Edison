@@ -1,3 +1,4 @@
+import django_heroku
 from pathlib import Path
 import os
 
@@ -154,3 +155,5 @@ DJOSER = {
     'SEND_ACTIVATION_EMAIL': False,
     'SERIALIZERS': {},
 }
+
+django_heroku.settings(locals())
