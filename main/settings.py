@@ -125,11 +125,13 @@ STATICFILES_DIRS = ((BASE_DIR / 'react-psychic/build/static'), )
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    'https://edison-psychic.herokuapp.com',
-    'http://127.0.0.1:3000',
-    'http://127.0.0.1:8000',
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'https://edison-psychic.herokuapp.com',
+#     'http://127.0.0.1:3000',
+#     'http://127.0.0.1:8000',
+# ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_METHODS = [
     "DELETE",
